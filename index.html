@@ -3,188 +3,169 @@
 <head>
   <meta charset="UTF-8">
   <title>روابط MLA2025HM</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
-    /* ========== Variables ========== */
+    /* --- المتغيرات الرئيسية لسهولة التعديل --- */
     :root {
-      --main-bg: #0e0e0e;
-      --accent: #00ffd5;
-      --accent-light: #00ff88;
-      --card-bg: #1f1f1f;
-      --text-light: #ffffff;
-      --text-muted: #aaa;
-      --transition: 0.3s ease-out;
+      --primary-color: #00ffd5; /* اللون الرئيسي (السيان) */
+      --background-color: #0d1117; /* لون الخلفية الداكن */
+      --card-color: #161b22; /* لون خلفية الصناديق */
+      --text-color: #e6edf3; /* لون النص الأساسي */
+      --shadow-color: rgba(0, 255, 213, 0.5); /* لون الظل المتوهج */
     }
 
-    /* ========== Global Reset ========== */
-    * {
+    body {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    html, body {
-      height: 100%;
+      background-color: var(--background-color);
+      background-image: linear-gradient(180deg, #0d1117 0%, #000000 100%);
+      color: var(--text-color);
       font-family: 'Cairo', sans-serif;
-      background: var(--main-bg);
-      color: var(--text-light);
       text-align: center;
-      overflow-x: hidden;
-      animation: fadeIn 0.8s var(--transition) both;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ========== Header ========== */
+    /* --- الترويسة --- */
     header {
-      position: relative;
       padding: 40px 20px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      text-shadow: 0 0 15px var(--shadow-color);
     }
 
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 8px;
+    h1 {
+      font-size: 2.8em;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+      color: var(--primary-color);
     }
 
     header p {
-      font-size: 1rem;
-      opacity: 0.9;
+      font-size: 1.1em;
+      color: var(--text-color);
+      margin: 0;
     }
 
-    /* ========== Links Section ========== */
+    /* --- حاوية الروابط (تصميم شبكي متجاوب) --- */
     .links-container {
+      padding: 20px;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
+      /* تصميم متجاوب: يعرض أكبر عدد من الأعمدة بعرض 300 بكسل كحد أدنى */
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      max-width: 900px; /* عرض أقصى للحاوية على الشاشات الكبيرة */
+      width: 90%;
+      margin: 20px auto;
+      flex-grow: 1; /* لجعل المحتوى يملأ المساحة المتاحة */
     }
-
+    
+    /* --- صناديق الروابط --- */
     .link-box {
-      position: relative;
-      background: var(--card-bg);
+      background-color: var(--card-color);
+      border: 1px solid #30363d;
       border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 6px 20px rgba(0, 255, 136, 0.2);
-      transition: transform var(--transition), box-shadow var(--transition);
-      animation: popIn 0.6s both;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      /* حركة الدخول الانسيابية */
+      animation: fadeInSlideUp 0.8s ease-out forwards;
+      opacity: 0; /* يبدأ شفافاً قبل الحركة */
+      transform: translateY(20px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
+    /* تأخير الحركة لكل صندوق على حدة */
     .link-box:nth-child(1) { animation-delay: 0.2s; }
-    .link-box:nth-child(2) { animation-delay: 0.35s; }
-    .link-box:nth-child(3) { animation-delay: 0.5s; }
-    .link-box:nth-child(4) { animation-delay: 0.65s; }
+    .link-box:nth-child(2) { animation-delay: 0.3s; }
+    .link-box:nth-child(3) { animation-delay: 0.4s; }
+    .link-box:nth-child(4) { animation-delay: 0.5s; }
 
-    @keyframes popIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-
-    .link-box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
-      opacity: 0;
-      transform: rotate(45deg);
-      transition: opacity var(--transition);
-    }
 
     .link-box:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 30px rgba(0, 255, 136, 0.3);
-    }
-
-    .link-box:hover::before {
-      opacity: 0.1;
+      box-shadow: 0 0 25px var(--shadow-color);
     }
 
     .link-box a {
-      display: block;
-      padding: 20px;
-      color: var(--accent-light);
+      color: var(--text-color);
       text-decoration: none;
-      font-size: 1.25rem;
-      font-weight: 700;
-      transition: color var(--transition);
+      font-size: 1.3em;
+      font-weight: bold;
+      display: block;
+      padding: 25px 20px;
+      transition: color 0.3s ease;
     }
-
+    
     .link-box a:hover {
-      color: var(--accent);
+        color: var(--primary-color);
     }
 
-    /* ========== Footer ========== */
+    /* --- الأيقونات --- */
+    .link-box a i {
+      margin-left: 15px; /* مسافة بين الأيقونة والنص */
+      color: var(--primary-color);
+      font-size: 1.2em;
+      transition: transform 0.3s ease;
+    }
+
+    .link-box:hover a i {
+      transform: scale(1.1);
+    }
+
+    /* --- التذييل --- */
     footer {
-      margin-top: 60px;
       padding: 20px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      background: var(--card-bg);
+      font-size: 0.9em;
+      color: #8b949e;
+      background-color: transparent;
+      margin-top: 40px;
     }
 
-    /* ========== Responsive ========== */
-    @media (min-width: 600px) {
-      .links-container {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      header h1 {
-        font-size: 3.5rem;
-      }
-
-      header p {
-        font-size: 1.1rem;
+    /* --- تعريف حركة الدخول --- */
+    @keyframes fadeInSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
 
-    @media (min-width: 1024px) {
-      .links-container {
-        grid-template-columns: repeat(4, 1fr);
-      }
-
-      .link-box a {
-        font-size: 1.1rem;
-      }
-    }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>روابطي الاجتماعية 📱</h1>
-    <p>تابعني على المنصات التالية</p>
+    <h1><i class="fas fa-link"></i> روابطي الاجتماعية</h1>
+    <p>تابعني على المنصات التالية لتصلك كل التحديثات</p>
   </header>
 
   <div class="links-container">
     <div class="link-box">
-      <a href="https://youtube.com/@mla2025hm" target="_blank">🎥 قناتي على يوتيوب</a>
+      <a href="https://youtube.com/@mla2025hm" target="_blank">
+        <i class="fab fa-youtube"></i> قناتي على يوتيوب
+      </a>
     </div>
     <div class="link-box">
-      <a href="https://www.facebook.com/share/1Cuh18EStf/" target="_blank">📘 صفحتي على فيسبوك</a>
+      <a href="https://www.facebook.com/share/1Cuh18EStf/" target="_blank">
+        <i class="fab fa-facebook"></i> صفحتي على فيسبوك
+      </a>
     </div>
     <div class="link-box">
-      <a href="https://www.instagram.com/happy006696?igsh=MTdxdTVmOHBoMm04bQ==" target="_blank">📷 حسابي على إنستغرام</a>
+      <a href="https://www.instagram.com/happy006696?igsh=MTdxdTVmOHBoMm04bQ==" target="_blank">
+        <i class="fab fa-instagram"></i> حسابي على إنستغرام
+      </a>
     </div>
     <div class="link-box">
-      <a href="https://hmjask.github.io/HM-CHANNELS/" target="_blank">✈️ قناتي على تليغرام</a>
+      <a href="https://hmjask.github.io/HM-CHANNELS/" target="_blank">
+        <i class="fab fa-telegram"></i> قناتي على تليغرام
+      </a>
     </div>
   </div>
 
   <footer>
-    &copy; 2025 MLA2025HM. جميع الحقوق محفوظة.
+    © 2025 MLA2025HM. جميع الحقوق محفوظة.
   </footer>
 
 </body>
