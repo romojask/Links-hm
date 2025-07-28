@@ -5,7 +5,9 @@
   <title>روابط MLA2025HM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -13,18 +15,19 @@
     /* --- المتغيرات الرئيسية لسهولة التعديل --- */
     :root {
       --primary-color: #00ffd5; /* اللون الرئيسي (السيان) */
-      --background-color: #0d1117; /* لون الخلفية الداكن */
-      --card-color: #161b22; /* لون خلفية الصناديق */
-      --text-color: #e6edf3; /* لون النص الأساسي */
-      --shadow-color: rgba(0, 255, 213, 0.5); /* لون الظل المتوهج */
+      --card-color: rgba(15, 15, 15, 0.75); /* لون خلفية الصناديق مع شفافية */
+      --text-color: #f0f0f0; /* لون النص الأساسي */
+      --shadow-color: rgba(0, 255, 213, 0.6); /* لون الظل المتوهج */
     }
 
     body {
       margin: 0;
       padding: 0;
-      background-color: var(--background-color);
-      background-image: linear-gradient(180deg, #0d1117 0%, #000000 100%);
+      /* --- خلفية متدرجة زاهية ومُشبعة --- */
+      background-color: #a200ff;
+      background-image: linear-gradient(160deg, #a200ff 0%, #ff0073 50%, #ff8c00 100%);
       color: var(--text-color);
+      /* --- استخدام الخط المزخرف الجديد --- */
       font-family: 'Cairo', sans-serif;
       text-align: center;
       min-height: 100vh;
@@ -35,44 +38,53 @@
     /* --- الترويسة --- */
     header {
       padding: 40px 20px;
-      text-shadow: 0 0 15px var(--shadow-color);
     }
 
+    /* --- العنوان الرئيسي المزخرف والمتدرج اللون --- */
     h1 {
-      font-size: 2.8em;
-      margin: 0 0 10px 0;
+      font-family: 'Lemonada', cursive; /* تطبيق الخط المزخرف */
+      font-size: 3.5em;
       font-weight: 700;
-      color: var(--primary-color);
+      margin: 0 0 10px 0;
+      /* تأثير التدرج اللوني للنص */
+      background-image: linear-gradient(180deg, #ffffff 30%, var(--primary-color) 100%);
+      -webkit-background-clip: text; /* لدعم المتصفحات */
+      background-clip: text;
+      color: transparent;
+      /* تعديل الظل ليتناسب مع التدرج */
+      text-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
     }
 
     header p {
-      font-size: 1.1em;
+      font-family: 'Lemonada', cursive;
+      font-size: 1.2em;
       color: var(--text-color);
       margin: 0;
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
     }
 
     /* --- حاوية الروابط (تصميم شبكي متجاوب) --- */
     .links-container {
       padding: 20px;
       display: grid;
-      /* تصميم متجاوب: يعرض أكبر عدد من الأعمدة بعرض 300 بكسل كحد أدنى */
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 25px;
-      max-width: 900px; /* عرض أقصى للحاوية على الشاشات الكبيرة */
+      max-width: 900px;
       width: 90%;
       margin: 20px auto;
-      flex-grow: 1; /* لجعل المحتوى يملأ المساحة المتاحة */
+      flex-grow: 1;
     }
     
     /* --- صناديق الروابط --- */
     .link-box {
       background-color: var(--card-color);
-      border: 1px solid #30363d;
+      border: 1px solid rgba(255, 255, 255, 0.2);
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-      /* حركة الدخول الانسيابية */
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px); /* تأثير زجاجي لإضافة عمق */
+      -webkit-backdrop-filter: blur(5px);
       animation: fadeInSlideUp 0.8s ease-out forwards;
-      opacity: 0; /* يبدأ شفافاً قبل الحركة */
+      opacity: 0;
       transform: translateY(20px);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
@@ -85,15 +97,17 @@
 
 
     .link-box:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 25px var(--shadow-color);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 0 30px var(--shadow-color);
+      border-color: var(--primary-color);
     }
 
     .link-box a {
+      font-family: 'Lemonada', cursive; /* تطبيق الخط المزخرف */
       color: var(--text-color);
       text-decoration: none;
-      font-size: 1.3em;
-      font-weight: bold;
+      font-size: 1.4em;
+      font-weight: 700;
       display: block;
       padding: 25px 20px;
       transition: color 0.3s ease;
@@ -103,23 +117,24 @@
         color: var(--primary-color);
     }
 
-    /* --- الأيقونات --- */
     .link-box a i {
-      margin-left: 15px; /* مسافة بين الأيقونة والنص */
+      margin-left: 15px;
       color: var(--primary-color);
       font-size: 1.2em;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, text-shadow 0.3s ease;
     }
 
     .link-box:hover a i {
       transform: scale(1.1);
+      text-shadow: 0 0 15px var(--primary-color);
     }
 
     /* --- التذييل --- */
     footer {
       padding: 20px;
       font-size: 0.9em;
-      color: #8b949e;
+      color: #e0e0e0;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
       background-color: transparent;
       margin-top: 40px;
     }
@@ -132,34 +147,44 @@
       }
     }
 
+    /* تعديلات للشاشات الصغيرة */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.5em;
+      }
+      .link-box a {
+        font-size: 1.2em;
+      }
+    }
+
   </style>
 </head>
 <body>
 
   <header>
     <h1><i class="fas fa-link"></i> روابطي الاجتماعية</h1>
-    <p>تابعني على المنصات التالية لتصلك كل التحديثات</p>
+    <p>تابعني هنا!</p>
   </header>
 
   <div class="links-container">
     <div class="link-box">
       <a href="https://youtube.com/@mla2025hm" target="_blank">
-        <i class="fab fa-youtube"></i> قناتي على يوتيوب
+        <i class="fab fa-youtube"></i> يوتيوب
       </a>
     </div>
     <div class="link-box">
       <a href="https://www.facebook.com/share/1Cuh18EStf/" target="_blank">
-        <i class="fab fa-facebook"></i> صفحتي على فيسبوك
+        <i class="fab fa-facebook"></i> فيسبوك
       </a>
     </div>
     <div class="link-box">
       <a href="https://www.instagram.com/happy006696?igsh=MTdxdTVmOHBoMm04bQ==" target="_blank">
-        <i class="fab fa-instagram"></i> حسابي على إنستغرام
+        <i class="fab fa-instagram"></i> إنستغرام
       </a>
     </div>
     <div class="link-box">
       <a href="https://hmjask.github.io/HM-CHANNELS/" target="_blank">
-        <i class="fab fa-telegram"></i> قناتي على تليغرام
+        <i class="fab fa-telegram"></i> تليغرام
       </a>
     </div>
   </div>
