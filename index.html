@@ -1,71 +1,174 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <title>روابط MLA2025HM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    /* ========== Variables ========== */
+    :root {
+      --main-bg: #0e0e0e;
+      --accent: #00ffd5;
+      --accent-light: #00ff88;
+      --card-bg: #1f1f1f;
+      --text-light: #ffffff;
+      --text-muted: #aaa;
+      --transition: 0.3s ease-out;
+    }
+
+    /* ========== Global Reset ========== */
+    * {
       margin: 0;
       padding: 0;
-      background-color: #0e0e0e;
-      color: #ffffff;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
       font-family: 'Cairo', sans-serif;
+      background: var(--main-bg);
+      color: var(--text-light);
       text-align: center;
-    }header {
-  background-color: #00ffd5;
-  color: #0e0e0e;
-  padding: 30px 10px;
-}
+      overflow-x: hidden;
+      animation: fadeIn 0.8s var(--transition) both;
+    }
 
-h1 {
-  font-size: 2.5em;
-  margin: 0;
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-.links-container {
-  padding: 40px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 500px;
-  margin: 0 auto;
-}
+    /* ========== Header ========== */
+    header {
+      position: relative;
+      padding: 40px 20px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    }
 
-.link-box {
-  background-color: #1f1f1f;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
-  transition: transform 0.3s;
-}
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 8px;
+    }
 
-.link-box:hover {
-  transform: translateY(-5px);
-}
+    header p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
 
-.link-box a {
-  color: #00ff88;
-  text-decoration: none;
-  font-size: 1.2em;
-  font-weight: bold;
-}
+    /* ========== Links Section ========== */
+    .links-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
 
-footer {
-  margin-top: 40px;
-  padding: 15px;
-  font-size: 0.9em;
-  color: #aaa;
-  background-color: #1f1f1f;
-}
+    .link-box {
+      position: relative;
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 255, 136, 0.2);
+      transition: transform var(--transition), box-shadow var(--transition);
+      animation: popIn 0.6s both;
+    }
 
+    .link-box:nth-child(1) { animation-delay: 0.2s; }
+    .link-box:nth-child(2) { animation-delay: 0.35s; }
+    .link-box:nth-child(3) { animation-delay: 0.5s; }
+    .link-box:nth-child(4) { animation-delay: 0.65s; }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .link-box::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, var(--accent-light) 0%, transparent 70%);
+      opacity: 0;
+      transform: rotate(45deg);
+      transition: opacity var(--transition);
+    }
+
+    .link-box:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px rgba(0, 255, 136, 0.3);
+    }
+
+    .link-box:hover::before {
+      opacity: 0.1;
+    }
+
+    .link-box a {
+      display: block;
+      padding: 20px;
+      color: var(--accent-light);
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 700;
+      transition: color var(--transition);
+    }
+
+    .link-box a:hover {
+      color: var(--accent);
+    }
+
+    /* ========== Footer ========== */
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      background: var(--card-bg);
+    }
+
+    /* ========== Responsive ========== */
+    @media (min-width: 600px) {
+      .links-container {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      header h1 {
+        font-size: 3.5rem;
+      }
+
+      header p {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .links-container {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .link-box a {
+        font-size: 1.1rem;
+      }
+    }
   </style>
 </head>
 <body>
+
   <header>
     <h1>روابطي الاجتماعية 📱</h1>
     <p>تابعني على المنصات التالية</p>
-  </header>  <div class="links-container">
+  </header>
+
+  <div class="links-container">
     <div class="link-box">
       <a href="https://youtube.com/@mla2025hm" target="_blank">🎥 قناتي على يوتيوب</a>
     </div>
@@ -78,8 +181,11 @@ footer {
     <div class="link-box">
       <a href="https://hmjask.github.io/HM-CHANNELS/" target="_blank">✈️ قناتي على تليغرام</a>
     </div>
-  </div>  <footer>
+  </div>
+
+  <footer>
     &copy; 2025 MLA2025HM. جميع الحقوق محفوظة.
   </footer>
+
 </body>
 </html>
