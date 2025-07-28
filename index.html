@@ -14,73 +14,53 @@
   <style>
     /* --- المتغيرات الرئيسية لسهولة التعديل --- */
     :root {
-      --primary-color: #FFD700; /* اللون الذهبي/الأصفر الرئيسي */
-      --card-color: rgba(25, 25, 25, 0.85); /* لون خلفية الصناديق أسود غامق مع شفافية */
-      --text-color: #F8F8F8; /* لون النص الأساسي (أبيض ناصع) */
-      --shadow-color: rgba(255, 215, 0, 0.7); /* لون الظل المتوهج (ذهبي) */
+      --primary-color: #00ffd5; /* اللون الرئيسي (السيان) */
+      --card-color: rgba(15, 15, 15, 0.75); /* لون خلفية الصناديق مع شفافية */
+      --text-color: #f0f0f0; /* لون النص الأساسي */
+      --shadow-color: rgba(0, 255, 213, 0.6); /* لون الظل المتوهج */
     }
 
     body {
       margin: 0;
       padding: 0;
-      /* --- خلفية سوداء عميقة ومتدرجة خفيفة --- */
-      background-color: #0A0A0A; /* أسود غامق جداً */
-      background-image: linear-gradient(160deg, #0A0A0A 0%, #1A1A1A 100%); /* تدرج خفيف للأسود */
+      /* --- خلفية متدرجة زاهية ومُشبعة --- */
+      background-color: #a200ff;
+      background-image: linear-gradient(160deg, #a200ff 0%, #ff0073 50%, #ff8c00 100%);
       color: var(--text-color);
+      /* --- استخدام الخط المزخرف الجديد --- */
       font-family: 'Cairo', sans-serif;
       text-align: center;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden; /* لمنع ظهور شريط التمرير الأفقي */
     }
 
     /* --- الترويسة --- */
     header {
-      padding: 40px 20px 20px;
-      position: relative;
-      z-index: 10;
+      padding: 40px 20px;
     }
 
     /* --- العنوان الرئيسي المزخرف والمتدرج اللون --- */
     h1 {
       font-family: 'Lemonada', cursive; /* تطبيق الخط المزخرف */
-      font-size: 3.8em; /* تكبير الخط قليلاً */
+      font-size: 3.5em;
       font-weight: 700;
       margin: 0 0 10px 0;
-      /* تأثير التدرج اللوني للنص (من الأبيض إلى الذهبي) */
-      background-image: linear-gradient(180deg, #FFFFFF 30%, var(--primary-color) 100%);
-      -webkit-background-clip: text;
+      /* تأثير التدرج اللوني للنص */
+      background-image: linear-gradient(180deg, #ffffff 30%, var(--primary-color) 100%);
+      -webkit-background-clip: text; /* لدعم المتصفحات */
       background-clip: text;
       color: transparent;
-      /* ظل نص متوهج بلون ذهبي */
-      text-shadow: 0 0 30px var(--shadow-color);
-      animation: neonGlow 1.5s ease-in-out infinite alternate; /* إضافة تأثير إضاءة متوهجة */
+      /* تعديل الظل ليتناسب مع التدرج */
+      text-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
     }
-
-    /* إضاءة النيون للعنوان */
-    @keyframes neonGlow {
-      from {
-        text-shadow: 0 0 10px var(--shadow-color),
-                     0 0 20px var(--shadow-color),
-                     0 0 30px var(--shadow-color),
-                     0 0 40px var(--primary-color);
-      }
-      to {
-        text-shadow: 0 0 20px var(--shadow-color),
-                     0 0 30px var(--shadow-color),
-                     0 0 40px var(--primary-color),
-                     0 0 50px var(--primary-color);
-      }
-    }
-
 
     header p {
       font-family: 'Lemonada', cursive;
-      font-size: 1.3em; /* تكبير الخط قليلاً */
+      font-size: 1.2em;
       color: var(--text-color);
       margin: 0;
-      text-shadow: 0 2px 7px rgba(0,0,0,0.8); /* ظل أغمق وأوضح */
+      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
     }
 
     /* --- حاوية الروابط (تصميم شبكي متجاوب) --- */
@@ -88,50 +68,26 @@
       padding: 20px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px; /* زيادة المسافة بين الصناديق */
-      max-width: 950px; /* زيادة عرض الحاوية قليلاً */
+      gap: 25px;
+      max-width: 900px;
       width: 90%;
-      margin: 30px auto; /* زيادة الهامش العلوي */
+      margin: 20px auto;
       flex-grow: 1;
     }
     
     /* --- صناديق الروابط --- */
     .link-box {
       background-color: var(--card-color);
-      border: 2px solid rgba(255, 215, 0, 0.3); /* حدود ذهبية خفيفة */
-      border-radius: 15px; /* تدوير أكبر للحواف */
-      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7); /* ظل أغمق وأكبر */
-      backdrop-filter: blur(8px); /* تأثير زجاجي أقوى */
-      -webkit-backdrop-filter: blur(8px);
-      animation: fadeInSlideUp 0.9s ease-out forwards; /* تعديل سرعة الحركة */
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px); /* تأثير زجاجي لإضافة عمق */
+      -webkit-backdrop-filter: blur(5px);
+      animation: fadeInSlideUp 0.8s ease-out forwards;
       opacity: 0;
-      transform: translateY(30px); /* زيادة مسافة الارتفاع */
-      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-      position: relative;
-      overflow: hidden; /* لإخفاء أي جزء زائد عن الحدود */
+      transform: translateY(20px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    /* تأثيرات جمالية إضافية للصندوق */
-    .link-box::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
-      transform: rotate(45deg);
-      transition: all 0.6s ease-out;
-      opacity: 0;
-    }
-
-    .link-box:hover::before {
-      transform: rotate(0deg);
-      opacity: 1;
-      top: -20%;
-      left: -20%;
-    }
-
 
     /* تأخير الحركة لكل صندوق على حدة */
     .link-box:nth-child(1) { animation-delay: 0.2s; }
@@ -141,49 +97,46 @@
 
 
     .link-box:hover {
-      transform: translateY(-12px) scale(1.03); /* زيادة تأثير الرفع والتكبير */
-      box-shadow: 0 0 45px var(--shadow-color); /* ظل متوهج أقوى */
-      border-color: var(--primary-color); /* إبراز الحدود باللون الذهبي */
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 0 30px var(--shadow-color);
+      border-color: var(--primary-color);
     }
 
     .link-box a {
-      font-family: 'Lemonada', cursive;
+      font-family: 'Lemonada', cursive; /* تطبيق الخط المزخرف */
       color: var(--text-color);
       text-decoration: none;
-      font-size: 1.6em; /* تكبير حجم النص داخل الروابط */
+      font-size: 1.4em;
       font-weight: 700;
-      display: flex; /* استخدام فليكس بوكس للمحاذاة */
-      justify-content: center; /* توسيط أفقي */
-      align-items: center; /* توسيط عمودي */
-      padding: 30px 20px; /* زيادة المساحة الداخلية */
-      transition: color 0.3s ease, text-shadow 0.3s ease;
+      display: block;
+      padding: 25px 20px;
+      transition: color 0.3s ease;
     }
     
     .link-box a:hover {
-        color: var(--primary-color); /* تغيير لون النص إلى الذهبي عند التحويم */
-        text-shadow: 0 0 10px var(--primary-color); /* إضافة ظل خفيف للنص عند التحويم */
+        color: var(--primary-color);
     }
 
     .link-box a i {
-      margin-left: 18px; /* زيادة المسافة عن النص */
+      margin-left: 15px;
       color: var(--primary-color);
-      font-size: 1.4em; /* تكبير حجم الأيقونة */
+      font-size: 1.2em;
       transition: transform 0.3s ease, text-shadow 0.3s ease;
     }
 
     .link-box:hover a i {
-      transform: scale(1.2) rotate(5deg); /* تكبير ودوران بسيط للأيقونة */
-      text-shadow: 0 0 20px var(--primary-color), 0 0 30px var(--primary-color); /* ظل متوهج أقوى للأيقونة */
+      transform: scale(1.1);
+      text-shadow: 0 0 15px var(--primary-color);
     }
 
     /* --- التذييل --- */
     footer {
-      padding: 25px; /* زيادة المساحة الداخلية */
-      font-size: 1em; /* تكبير حجم الخط */
-      color: #C0C0C0; /* لون رمادي فاتح للتذييل */
-      text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+      padding: 20px;
+      font-size: 0.9em;
+      color: #e0e0e0;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
       background-color: transparent;
-      margin-top: 50px; /* زيادة الهامش العلوي */
+      margin-top: 40px;
     }
 
     /* --- تعريف حركة الدخول --- */
@@ -195,39 +148,12 @@
     }
 
     /* تعديلات للشاشات الصغيرة */
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
       h1 {
-        font-size: 3em;
-      }
-      header p {
-        font-size: 1.1em;
-      }
-      .links-container {
-        grid-template-columns: 1fr; /* عمود واحد في الشاشات الصغيرة جداً */
-        gap: 20px;
-        width: 95%;
-      }
-      .link-box a {
-        font-size: 1.4em;
-        padding: 20px 15px;
-      }
-      .link-box a i {
-        font-size: 1.3em;
-      }
-    }
-
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 2.2em;
-      }
-      header p {
-        font-size: 1em;
+        font-size: 2.5em;
       }
       .link-box a {
         font-size: 1.2em;
-      }
-      .link-box a i {
-        font-size: 1.1em;
       }
     }
 
@@ -237,7 +163,7 @@
 
   <header>
     <h1><i class="fas fa-link"></i> روابطي الاجتماعية</h1>
-    <p>تابعني على منصاتي المفضلة!</p>
+    <p>تابعني هنا!</p>
   </header>
 
   <div class="links-container">
@@ -259,16 +185,6 @@
     <div class="link-box">
       <a href="https://hmjask.github.io/HM-CHANNELS/" target="_blank">
         <i class="fab fa-telegram"></i> تليغرام
-      </a>
-    </div>
-    <div class="link-box">
-      <a href="#" target="_blank">
-        <i class="fab fa-discord"></i> ديسكورد
-      </a>
-    </div>
-    <div class="link-box">
-      <a href="#" target="_blank">
-        <i class="fab fa-tiktok"></i> تيك توك
       </a>
     </div>
   </div>
