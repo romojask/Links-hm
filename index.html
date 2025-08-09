@@ -1,197 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
+
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>روابط MLA2025HM</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>روابط MLA2025HM</title>  <!-- Fonts -->  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <style>
-    /* --- المتغيرات الرئيسية لسهولة التعديل --- */
-    :root {
-      --primary-color: #00ffd5; /* اللون الرئيسي (السيان) */
-      --card-color: rgba(15, 15, 15, 0.75); /* لون خلفية الصناديق مع شفافية */
-      --text-color: #f0f0f0; /* لون النص الأساسي */
-      --shadow-color: rgba(0, 255, 213, 0.6); /* لون الظل المتوهج */
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Lemonada:wght@600;700&display=swap" rel="stylesheet">  <!-- Icons -->  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" />  <style>
+    :root{
+      --primary:#00e7c5;              /* سيان ناعم */
+      --primary-2:#6fffe0;            /* درجة أفتح للهوفر */
+      --bg1:#0b1020;                  /* كحلي داكن */
+      --bg2:#1b1030;                  /* بنفسجي داكن */
+      --glass:rgba(20,20,30,.6);      /* خلفية زجاجية للصناديق */
+      --text:#e8eef6;                 /* نص */
+      --muted:#b7c2cf;                /* نص ثانوي */
+      --ring:rgba(0,231,197,.35);     /* وميض تركيز */
+      --radius:16px;                  /* نصف القطر القياسي */
+      --shadow:0 12px 28px rgba(0,0,0,.5);
     }
 
-    body {
-      margin: 0;
-      padding: 0;
-      /* --- خلفية متدرجة زاهية ومُشبعة --- */
-      background-color: #a200ff;
-      background-image: linear-gradient(160deg, #a200ff 0%, #ff0073 50%, #ff8c00 100%);
-      color: var(--text-color);
-      /* --- استخدام الخط المزخرف الجديد --- */
-      font-family: 'Cairo', sans-serif;
-      text-align: center;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0; color:var(--text);
+      font-family:'Cairo',system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,"Noto Sans",sans-serif;
+      min-height:100dvh; display:flex; flex-direction:column; align-items:stretch;
+      background:
+        radial-gradient(1200px 600px at 15% -200px, rgba(255,255,255,.06), transparent 60%),
+        radial-gradient(900px 500px at 120% 0, rgba(0,231,197,.08), transparent 60%),
+        linear-gradient(160deg,var(--bg1),var(--bg2));
     }
 
-    /* --- الترويسة --- */
-    header {
-      padding: 40px 20px;
-    }
+    header{padding:56px 20px 18px;text-align:center;position:relative;isolation:isolate}
+    header::before{content:"";position:absolute;inset:-30% -10% auto; height:70%; z-index:-1; filter:blur(60px);
+      background:radial-gradient(closest-side, rgba(0,231,197,.18), transparent 70%)}
 
-    /* --- العنوان الرئيسي المزخرف والمتدرج اللون --- */
-    h1 {
-      font-family: 'Lemonada', cursive; /* تطبيق الخط المزخرف */
-      font-size: 3.5em;
-      font-weight: 700;
-      margin: 0 0 10px 0;
-      /* تأثير التدرج اللوني للنص */
-      background-image: linear-gradient(180deg, #ffffff 30%, var(--primary-color) 100%);
-      -webkit-background-clip: text; /* لدعم المتصفحات */
-      background-clip: text;
-      color: transparent;
-      /* تعديل الظل ليتناسب مع التدرج */
-      text-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
-    }
+    h1{font-family:'Lemonada',cursive; font-weight:700; letter-spacing:.3px;
+       font-size:clamp(2rem,4.8vw,3.2rem); margin:0}
+    .sub{margin:10px 0 0; color:var(--muted); font-weight:700}
 
-    header p {
-      font-family: 'Lemonada', cursive;
-      font-size: 1.2em;
-      color: var(--text-color);
-      margin: 0;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.5);
-    }
+    /* شبكة الروابط */
+    .container{max-width:960px; width:100%; margin:26px auto; padding:0 20px; flex:1}
+    .grid{display:grid; gap:22px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 
-    /* --- حاوية الروابط (تصميم شبكي متجاوب) --- */
-    .links-container {
-      padding: 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      max-width: 900px;
-      width: 90%;
-      margin: 20px auto;
-      flex-grow: 1;
+    .card{
+      display:flex; align-items:center; justify-content:space-between; gap:14px;
+      padding:18px 20px; border-radius:var(--radius);
+      background:var(--glass); border:1px solid rgba(255,255,255,.14);
+      box-shadow:var(--shadow); backdrop-filter:saturate(115%) blur(10px);
+      -webkit-backdrop-filter:saturate(115%) blur(10px);
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      opacity:0; transform:translateY(14px);
+      animation:reveal .7s calc(var(--i,0) * 80ms) both;
     }
-    
-    /* --- صناديق الروابط --- */
-    .link-box {
-      background-color: var(--card-color);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 12px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px); /* تأثير زجاجي لإضافة عمق */
-      -webkit-backdrop-filter: blur(5px);
-      animation: fadeInSlideUp 0.8s ease-out forwards;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .card:hover{transform:translateY(-6px); box-shadow:0 16px 44px rgba(0,231,197,.22); border-color:var(--primary)}
+
+    .left{display:flex; align-items:center; gap:12px}
+    .left i{font-size:1.35rem; color:var(--primary)}
+    .title{font-family:'Lemonada',cursive; font-weight:700; font-size:1.15rem; margin:0}
+
+    .btn{
+      margin-inline-start:auto; padding:10px 16px; border-radius:999px;
+      background:transparent; color:var(--primary); border:1px solid var(--primary);
+      text-decoration:none; font-weight:900; transition:.22s ease; white-space:nowrap
     }
+    .btn:hover{background:var(--primary); color:#0b0f16}
+    .btn:focus-visible{outline:none; box-shadow:0 0 0 4px var(--ring)}
 
-    /* تأخير الحركة لكل صندوق على حدة */
-    .link-box:nth-child(1) { animation-delay: 0.2s; }
-    .link-box:nth-child(2) { animation-delay: 0.3s; }
-    .link-box:nth-child(3) { animation-delay: 0.4s; }
-    .link-box:nth-child(4) { animation-delay: 0.5s; }
+    footer{padding:26px 20px; text-align:center; color:var(--muted)}
 
+    @keyframes reveal{to{opacity:1; transform:none}}
 
-    .link-box:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 0 30px var(--shadow-color);
-      border-color: var(--primary-color);
-    }
-
-    .link-box a {
-      font-family: 'Lemonada', cursive; /* تطبيق الخط المزخرف */
-      color: var(--text-color);
-      text-decoration: none;
-      font-size: 1.4em;
-      font-weight: 700;
-      display: block;
-      padding: 25px 20px;
-      transition: color 0.3s ease;
-    }
-    
-    .link-box a:hover {
-        color: var(--primary-color);
-    }
-
-    .link-box a i {
-      margin-left: 15px;
-      color: var(--primary-color);
-      font-size: 1.2em;
-      transition: transform 0.3s ease, text-shadow 0.3s ease;
-    }
-
-    .link-box:hover a i {
-      transform: scale(1.1);
-      text-shadow: 0 0 15px var(--primary-color);
-    }
-
-    /* --- التذييل --- */
-    footer {
-      padding: 20px;
-      font-size: 0.9em;
-      color: #e0e0e0;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
-      background-color: transparent;
-      margin-top: 40px;
-    }
-
-    /* --- تعريف حركة الدخول --- */
-    @keyframes fadeInSlideUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* تعديلات للشاشات الصغيرة */
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2.5em;
-      }
-      .link-box a {
-        font-size: 1.2em;
-      }
-    }
-
-  </style>
-</head>
+    /* تقليل الحركة */
+    @media (prefers-reduced-motion:reduce){*{animation:none !important; transition:none !important}}
+  </style></head>
 <body>
-
   <header>
-    <h1><i class="fas fa-link"></i> روابطي الاجتماعية</h1>
-    <p>تابعني هنا!</p>
-  </header>
+    <h1><i class="fa-solid fa-link"></i> روابطِي الاجتماعية</h1>
+    <p class="sub">تابعني أينما كنت — بنقرة واحدة</p>
+  </header>  <main class="container" aria-labelledby="links">
+    <div class="grid" id="links">
+      <article class="card" style="--i:0">
+        <div class="left"><i class="fa-brands fa-youtube"></i><h2 class="title">يوتيوب</h2></div>
+        <a class="btn" href="https://youtube.com/@mla2025hm" target="_blank" rel="noopener" aria-label="افتح يوتيوب">زيارة</a>
+      </article><article class="card" style="--i:1">
+    <div class="left"><i class="fa-brands fa-facebook"></i><h2 class="title">فيسبوك</h2></div>
+    <a class="btn" href="https://www.facebook.com/share/1Cuh18EStf/" target="_blank" rel="noopener" aria-label="افتح فيسبوك">زيارة</a>
+  </article>
 
-  <div class="links-container">
-    <div class="link-box">
-      <a href="https://youtube.com/@mla2025hm" target="_blank">
-        <i class="fab fa-youtube"></i> يوتيوب
-      </a>
-    </div>
-    <div class="link-box">
-      <a href="https://www.facebook.com/share/1Cuh18EStf/" target="_blank">
-        <i class="fab fa-facebook"></i> فيسبوك
-      </a>
-    </div>
-    <div class="link-box">
-      <a href="https://www.instagram.com/happy006696?igsh=MTdxdTVmOHBoMm04bQ==" target="_blank">
-        <i class="fab fa-instagram"></i> إنستغرام
-      </a>
-    </div>
-    <div class="link-box">
-      <a href="https://hmjask.github.io/HM-CHANNELS/" target="_blank">
-        <i class="fab fa-telegram"></i> تليغرام
-      </a>
-    </div>
-  </div>
+  <article class="card" style="--i:2">
+    <div class="left"><i class="fa-brands fa-instagram"></i><h2 class="title">إنستغرام</h2></div>
+    <a class="btn" href="https://www.instagram.com/happy006696?igsh=MTdxdTVmOHBoMm04bQ==" target="_blank" rel="noopener" aria-label="افتح إنستغرام">زيارة</a>
+  </article>
 
-  <footer>
+  <article class="card" style="--i:3">
+    <div class="left"><i class="fa-brands fa-telegram"></i><h2 class="title">تليغرام</h2></div>
+    <a class="btn" href="https://hmjask.github.io/HM-CHANNELS/" target="_blank" rel="noopener" aria-label="افتح تليغرام">زيارة</a>
+  </article>
+</div>
+
+  </main>  <footer>
     © 2025 MLA2025HM. جميع الحقوق محفوظة.
   </footer>
-
 </body>
 </html>
